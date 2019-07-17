@@ -57,7 +57,7 @@ public class LinkedListCyclicOperations {
 		
 
 
-		int[] argumentArray = {2};
+		int[] argumentArray = {9,1,6};
 		System.out.println("Argument length:"+argumentArray.length);
 		for(int i=0; i< argumentArray.length;i++) {
 			singlyLinkedList.addAtTail(argumentArray[i]);
@@ -66,7 +66,7 @@ public class LinkedListCyclicOperations {
 		singlyLinkedList.printLinkedList();
 		
 		LinkedListSingly singlyLinkedList2 = new LinkedListSingly();
-		int[] argumentArray2 = {};
+		int[] argumentArray2 = {0};
 		System.out.println("Argument length:"+argumentArray2.length);
 		for(int i=0; i< argumentArray2.length;i++) {
 			singlyLinkedList2.addAtTail(argumentArray2[i]);
@@ -98,7 +98,7 @@ public class LinkedListCyclicOperations {
 		SinglyLinkedListNode head2 = singlyLinkedList2.getNodeAtIndex(0);
 		
 		LinkedListSingly singlyLinkedList3 = new LinkedListSingly();
-		SinglyLinkedListNode newHead = singlyLinkedList3.mergeTwoLists(head1, head2);
+		SinglyLinkedListNode newHead = singlyLinkedList3.addTwoNumbers(head1, head2);
 		singlyLinkedList3.printLinkedList(newHead);
 		
 	}

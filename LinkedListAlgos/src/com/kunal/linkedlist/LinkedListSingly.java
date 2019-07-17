@@ -620,5 +620,94 @@ public class LinkedListSingly {
 		 } 
 		 
 	 }
-	          
+	 
+	 public SinglyLinkedListNode addTwoNumbers(SinglyLinkedListNode l1, SinglyLinkedListNode l2) {
+		 
+		 SinglyLinkedListNode curNode1 = l1;
+		 SinglyLinkedListNode curNode2 = l2;
+		 SinglyLinkedListNode prevNode = null;
+		 int carryOver = 0;
+		 int sumOfNodesCarryOver = 0;
+		 int leftOver = 0;
+		 
+		 while (curNode1 != null && curNode2 != null) {
+			 sumOfNodesCarryOver = curNode1.val+curNode2.val+carryOver;
+			 if(curNode1.next == null && curNode2.next == null) {
+				 carryOver = sumOfNodesCarryOver/10;
+				 leftOver = sumOfNodesCarryOver%10;
+				 if(carryOver == 0) {
+					 curNode2.val = leftOver;
+				 }else {
+					 curNode2.val = leftOver;
+					 SinglyLinkedListNode aNode = new SinglyLinkedListNode(carryOver);
+					 curNode2.next = aNode;
+					 curNode2 = aNode;
+				 }
+				 
+			 }else {
+				 carryOver = sumOfNodesCarryOver/10;
+				 leftOver = sumOfNodesCarryOver%10;
+				 curNode2.val = leftOver;
+			 }
+			 
+			 prevNode = curNode2;
+			 curNode2 = curNode2.next;
+			 curNode1 = curNode1.next;
+		}
+		 
+		if(curNode1 == null && curNode2 != null) {
+			 
+			 while (curNode2 != null) {
+				 sumOfNodesCarryOver = curNode2.val+carryOver;
+				if(curNode2.next != null) {
+					carryOver = sumOfNodesCarryOver/10;
+					leftOver = sumOfNodesCarryOver%10;	
+					curNode2.val = leftOver;
+				}else {
+					carryOver =sumOfNodesCarryOver/10;
+					leftOver = sumOfNodesCarryOver%10;	
+					if(carryOver == 0) {
+						curNode2.val = leftOver;
+					}else {
+						curNode2.val = leftOver;
+						SinglyLinkedListNode aNode = new SinglyLinkedListNode(carryOver);
+						curNode2.next = aNode;
+						curNode2 = aNode;
+					}
+				}				
+				prevNode = curNode2;
+				curNode2 = curNode2.next;				
+			}
+			 
+		 }else if(curNode1 != null && curNode2 == null) {
+			 
+			 //int iterationAfterCurNodeNull =0;
+			 while (curNode1 != null) {
+				sumOfNodesCarryOver = curNode1.val+carryOver;
+				prevNode.next = curNode1;
+				if(curNode1.next != null) {
+					carryOver = sumOfNodesCarryOver/10;
+					leftOver = sumOfNodesCarryOver%10;
+					curNode1.val = leftOver;
+					
+				}else {
+					carryOver = sumOfNodesCarryOver/10;
+					leftOver = sumOfNodesCarryOver%10;
+					if(carryOver == 0) {
+						curNode1.val = leftOver;
+					}else {
+						curNode1.val = leftOver;
+						SinglyLinkedListNode aNode = new SinglyLinkedListNode(carryOver);
+						curNode1.next = aNode;
+						curNode1 = aNode;
+					}
+				}
+				prevNode = curNode1;
+				curNode1 = curNode1.next;
+			} 
+			 
+		 }
+		
+		return l2;		  
+	 }	          
 }
